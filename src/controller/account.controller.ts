@@ -10,7 +10,7 @@ import * as accountService from "../services/account.services";
 import { JwtPayload } from "jsonwebtoken";
 
 
-export const generateAccountController = catchAsync( async (req: JwtPayload, res: Response): Promise<void> => {
+export const generateAccountController = catchAsync( async (req: JwtPayload, res: Response) => {
     const email= req.user.email;
   
     try {
@@ -27,7 +27,7 @@ export const generateAccountController = catchAsync( async (req: JwtPayload, res
     })
         const {account_number, account_name, bank} = accountDetails.data;
     const account =  await accountService.createAccount(req.user.id, account_number, account_name, bank);  
-       successResponse(res,StatusCodes.CREATED, account);
+       return successResponse(res,StatusCodes.CREATED, account);
     } catch (error) {
       console.error('Error creating account:', error);
     throw new BadRequestError('Internal server error');

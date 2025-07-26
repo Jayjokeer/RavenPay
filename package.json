@@ -7,7 +7,7 @@
     "build": "tsc -p .",
     "dev": "nodemon --legacy-watch --watch './src/**/*.ts' --exec 'ts-node' ./src/server.ts",
     "start": "node  --max-old-space-size=4024 ./dist/src/server.js",
-    "migrate:latest": "knex migrate:latest --knexfile knexfile.ts",
+    "migrate": "knex migrate:latest --knexfile knexfile.ts",
     "migrate:rollback": "knex migrate:rollback --knexfile knexfile.ts"
   },
   "author": "",

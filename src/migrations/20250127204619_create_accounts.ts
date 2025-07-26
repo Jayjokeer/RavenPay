@@ -7,7 +7,7 @@ export async function up(knex: Knex): Promise<void> {
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE');
       table.string('account_number').unique().notNullable();
       table.decimal('balance', 15, 2).defaultTo(0);
-      table.string('account_name').unique().notNullable();
+      table.string('account_name').notNullable();
       table.string('bank').notNullable();
       table.timestamps(true, true);
     });

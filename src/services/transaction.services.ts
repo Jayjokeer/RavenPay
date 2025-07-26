@@ -8,3 +8,6 @@ export const createTransaction = async (transactionPayload: any) => {
   return transaction;
 };
 
+export const fetchTransactions = async (userId: string) => {
+  return await knex('transactions').where({ user_id: userId }).orderBy('created_at', 'desc');
+};

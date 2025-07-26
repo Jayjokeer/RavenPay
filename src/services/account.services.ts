@@ -19,6 +19,7 @@ export const decreaseBalance = async (accountId:string, amount:number) => {
 
 export const  generateBankAccount = async (userData: any) =>{
     try {
+      console.log(process.env.RAVEN_API_KEY_SECRET)
       const response = await axios.post(`${process.env.RAVEN_URL}/pwbt/generate_account`, {
         first_name: userData.first_name,
         last_name: userData.last_name,

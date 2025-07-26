@@ -5,4 +5,5 @@ const router = Router();
 
 router.route("/transfer").post(userAuth,transactionController.transferMoneyController);
 router.route("/deposit").post(userAuth,transactionController.depositMoneyController);
+router.route("/fetch-transactions").get(userAuth, transactionController.fetchTransactionsController);
 export { router as TransactionRoute };

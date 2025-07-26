@@ -38,7 +38,7 @@ export const registerUserController = catchAsync( async (req: Request, res: Resp
     }
 });
 
-export const loginController = catchAsync( async (req: Request, res: Response): Promise<void> => {
+export const loginController = catchAsync( async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     try {
@@ -54,7 +54,7 @@ export const loginController = catchAsync( async (req: Request, res: Response): 
   
       const token =  generateJWTwithExpiryDate(user);
   
-       successResponse(res, StatusCodes.OK, token);
+      return successResponse(res, StatusCodes.OK, token);
     } catch (error) {
       console.error('Error during login:', error);
       throw new BadRequestError('Internal server error')
