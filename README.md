@@ -22,7 +22,7 @@ Make sure the following tools are installed on your system:
 ### 2. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/raven-pay.git
+git clone https://github.com/Jayjokeer/RavenPay.git
 cd ravenPay
 ```
 
