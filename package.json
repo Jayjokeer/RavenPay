@@ -4,6 +4,8 @@
   "description": "A fintech API",
   "main": "index.js",
   "scripts": {
+    "test": "jest --detectOpenHandles --forceExit",
+    "test:watch": "jest --watch",
     "build": "tsc -p .",
     "dev": "nodemon --legacy-watch --watch './src/**/*.ts' --exec 'ts-node' ./src/server.ts",
     "start": "node  --max-old-space-size=4024 ./dist/src/server.js",
@@ -28,9 +30,14 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/helmet": "^4.0.0",
+    "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^22.10.10",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.0.5",
     "nodemon": "^3.1.9",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
   }

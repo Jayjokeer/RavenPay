@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import knex from '../db';
 import axios from 'axios';
 import { JwtPayload } from 'jsonwebtoken';
 import * as accountService from '../services/account.services';
@@ -16,7 +15,6 @@ export const transferMoneyController = catchAsync( async (req: JwtPayload, res: 
   const { user } = req as any;
   const { recipientAccount, amount, description } = req.body;
 
-  try {
     const account = await accountService.isExsitingAccount(user.id);
 
     if (!account) {
@@ -43,13 +41,9 @@ export const transferMoneyController = catchAsync( async (req: JwtPayload, res: 
     await transactionService.createTransaction({account_id: account.id, amount, description, type:TransactionType.TRANSFER, status: TransactionStatus.SUCCESS, reference: response.data.reference, user_id: user.id});    
 
    return successResponse(res,StatusCodes.CREATED, "Transfer Successful");
-} catch (error) {
-    console.error('Error processing transfer:', error);
-    throw new BadRequestError('Internal server error');}
-});
+} );
 
 export  const  depositMoneyController = catchAsync( async (req: JwtPayload, res: Response)=> {
-try {
     const { amount} = req.body;
 
     const userAccount = await accountService.isExsitingAccount(req.user.id);
@@ -101,21 +95,12 @@ try {
     };
    return successResponse(res,StatusCodes.OK, data);
 
-  } catch (error: any) {
-    console.error('Deposit generation error:', error);
-    throw new BadRequestError('Internal server error');
-  }
 });
 
 export const fetchTransactionsController = catchAsync(async (req: JwtPayload, res: Response) => {
   const userId = req.user.id;
 
-  try {
     const transactions = await transactionService.fetchTransactions(userId);
     return successResponse(res, StatusCodes.OK, transactions);
-  } catch (error) {
-    console.error('Error fetching transactions:', error);
-    throw new BadRequestError('Internal server error');
-  }
 });
 

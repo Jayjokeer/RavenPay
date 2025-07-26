@@ -13,7 +13,6 @@ import { JwtPayload } from "jsonwebtoken";
 export const generateAccountController = catchAsync( async (req: JwtPayload, res: Response) => {
     const email= req.user.email;
   
-    try {
       const existingAccount = await accountService.isExsitingAccount(email);
       if (existingAccount) {
         throw new BadRequestError('Account already exists');
@@ -28,9 +27,5 @@ export const generateAccountController = catchAsync( async (req: JwtPayload, res
         const {account_number, account_name, bank} = accountDetails.data;
     const account =  await accountService.createAccount(req.user.id, account_number, account_name, bank);  
        return successResponse(res,StatusCodes.CREATED, account);
-    } catch (error) {
-      console.error('Error creating account:', error);
-    throw new BadRequestError('Internal server error');
-    }
   });
 

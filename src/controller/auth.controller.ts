@@ -7,7 +7,6 @@ import { NextFunction, Request, Response } from "express";
 import { generateJWTwithExpiryDate } from "../utils/jwt";
 import * as authService from "../services/auth.service";
 export const registerUserController = catchAsync( async (req: Request, res: Response) => {
-   try{
     const {
       first_name,
       last_name,
@@ -29,19 +28,17 @@ export const registerUserController = catchAsync( async (req: Request, res: Resp
       phone
     }
     const user = await authService.createUser(userPayload);
-
-      const data = user;
+      const data = {
+        email: email.toLowerCase(),
+        first_name: first_name,
+        last_name: last_name,
+      };
       return successResponse(res,StatusCodes.CREATED, data);
-    }catch(error){
-        console.error('Error during user registration:', error);
-        throw new BadRequestError("Internal server error");
-    }
 });
 
 export const loginController = catchAsync( async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    try {
       const user = await authService.checkEmailExists(email);
       if (!user) {
         throw new NotFoundError('User not found');
@@ -55,8 +52,5 @@ export const loginController = catchAsync( async (req: Request, res: Response) =
       const token =  generateJWTwithExpiryDate(user);
   
       return successResponse(res, StatusCodes.OK, token);
-    } catch (error) {
-      console.error('Error during login:', error);
-      throw new BadRequestError('Internal server error')
-      ;}
-  });
+
+  }); 
