@@ -1,6 +1,6 @@
 # Raven-Pay
 
-A simple fintech API built with Express.js and PostgreSQL.
+A simple fintech API built with Express.js and MySQL.
 
 ---
 
