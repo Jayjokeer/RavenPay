@@ -58,7 +58,7 @@ RAVEN_API_KEY_SECRET=raven_pay_secret_key
 ### 5. Run Migrations
 
 ```bash
-npx knex migrate:latest
+npm run migrate
 ```
 
 This command sets up all the necessary tables in your database.
