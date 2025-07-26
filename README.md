@@ -47,7 +47,7 @@ DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_NAME=ravenpay
 JWT_SECRET=your_jwt_secret
-RAVEN_URL_raven_url
+RAVEN_URL_raven_url=your raven_url
 RAVEN_API_KEY_SECRET=raven_pay_secret_key
 ```
 
