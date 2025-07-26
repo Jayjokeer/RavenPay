@@ -11,7 +11,7 @@ A simple fintech API built with Express.js and PostgreSQL.
 Make sure the following tools are installed on your system:
 
 - **Node.js** (v18 or later): [Download Node.js](https://nodejs.org/)
-- **PostgreSQL**: [Download PostgreSQL](https://www.postgresql.org/download/)
+- **MySQL**
 - **Knex CLI**:
   ```bash
   npm install -g knex
@@ -51,7 +51,7 @@ RAVEN_URL_raven_url=your raven_url
 RAVEN_API_KEY_SECRET=raven_pay_secret_key
 ```
 
-> 💡 Make sure you create the `ravenpay` database in PostgreSQL before running migrations.
+> 💡 Make sure you create the `ravenpay` database in MySQL before running migrations.
 
 ---
 
@@ -93,7 +93,7 @@ This will run all test suites using Jest.
 
 - Node.js
 - Express.js
-- PostgreSQL
+- MySQL
 - Knex.js
 - Jest
 - Supertest
